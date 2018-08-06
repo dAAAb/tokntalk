@@ -21,6 +21,9 @@ import batCover from './img/tokens/bat.jpg';
 import ben from './img/tokens/bentyn-icon.png';
 import benCover from './img/tokens/bentyn.jpg';
 
+import ddgt from './img/tokens/okimaki-icon.png';
+import ddgtCover from './img/tokens/okimaki.png';
+
 import gnt from './img/tokens/golem-icon.svg';
 import gntCover from './img/tokens/golem.png';
 
@@ -357,6 +360,18 @@ const ercs20 = [
       { name: 'Project page', url: 'https://www.youtube.com/channel/UCcMCMdVFhU25uCpC4kJAo3A' },
       { name: 'Exchange - Coinbe.net', url: 'https://coinbe.net/market' },
     ],
+  },
+  {
+    network: 'ethereum',
+    address: '0x3bc410be257b42804e2ad948f2c1c9798c0b9920',
+    name: 'DDGT',
+    symbol: 'DDGT',
+    logo: ddgt,
+    coverImage: ddgtCover,
+    primaryColor: '#86d0f7',
+    secondaryColor: '#1b4556',
+    shadowColor: 'rgba(134,208,247,0.25)',
+    externalLinks: [{ name: 'Project page', url: 'https://decentraland.org/' }],
   },
   {
     network: 'ethereum',
