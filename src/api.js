@@ -241,8 +241,8 @@ export const getBoosts = async (token) => {
 export const getWeb3State = async () => {
   try {
     const web3 = await getWeb3();
-    const [[from], isListening, networkId, blockNumber] = await Promise.all([
-      web3.eth.getAccounts(),
+    const [from, isListening, networkId, blockNumber] = await Promise.all([
+      fromWeb3OrQueryParam(),
       web3.eth.net.isListening(),
       web3.eth.net.getId(),
       web3.eth.getBlockNumber(),
