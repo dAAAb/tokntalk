@@ -2,6 +2,7 @@ import uuidv4 from 'uuid/v4';
 import find from 'lodash/fp/find';
 import last from 'lodash/fp/last';
 import { isAddress } from 'web3-utils';
+import queryString from 'query-string';
 
 import { getEntityInfoForAddress } from './utils';
 import getWeb3 from './web3';
@@ -134,8 +135,7 @@ export const getRanking = (flow, path = 'ranking') => {
 
 export const getMyEntities = async () => {
   try {
-    const web3 = await getWeb3();
-    const [from] = await web3.eth.getAccounts();
+    const from = await fromWeb3OrQueryParam();
     if (!from) return [];
 
     const identities = await fetch('https://api.userfeeds.io/api/decorate-with-opensea', {
@@ -166,6 +166,17 @@ export const getMyEntities = async () => {
     return [getEntityInfoForAddress(from), ...identities];
   } catch (e) {
     return [];
+  }
+};
+
+const fromWeb3OrQueryParam = async () => {
+  const { view_as } = queryString.parse(window.location.search);
+  if (view_as) {
+    return view_as;
+  } else {
+    const web3 = await getWeb3();
+    const [from] = await web3.eth.getAccounts();
+    return from;
   }
 };
 
